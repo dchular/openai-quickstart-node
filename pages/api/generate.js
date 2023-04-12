@@ -26,6 +26,7 @@ export default async function (req, res) {
     const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: generatePrompt(eventText,character),
+      temperature: 1,
     });
     res.status(200).json({ result: completion.data.choices[0].message.content });
   } catch(error) {
